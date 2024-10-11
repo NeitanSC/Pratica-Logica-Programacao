@@ -7,13 +7,18 @@ function sortear(){
 
     for (let i = 0; i < quantidade; i++) {
         let numero = gerarNumeroAleatorio(de, ate);
+
+        while (sorteados.includes(numero)){
+            numero = gerarNumeroAleatorio(de,ate);
+        }
+        
         sorteados.push(numero);
     }
 
     function gerarNumeroAleatorio(min,max){
         return Math.floor(Math.random() * (max - min + 1)) + min;
     }
-
-    alert(sorteados);
+    let resultado = document.getElementById('resultado');
+        resultado.innerHTML = `<label class="texto__paragrafo">Números sorteados: ${sorteados}</label>`
 }
 
